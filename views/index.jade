@@ -1,8 +1,8 @@
 extends layout
 
 block content
-  if (authenticated)
-    p Welcome to #{authenticated}
+  if (locals.authenticated)
+    p Welcome to #{locals.authenticated}
     a(href="logout") Logout
   else
     p Welcome new visitor!

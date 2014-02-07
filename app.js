@@ -27,15 +27,15 @@ app.use(function (req,res,next){
     console.log('bbbbb');
     if (req.session.loggedIn){
         console.log('已登录');
-        res.locals('authenticated', true);
+        res.locals.authenticated = true;
         app.users.findOne({_id : {ObjectId: req.session.loggedIn}},function(err, doc){
             if(err) return next(err);
-            res.locals('me',doc);
+
             next();
         });
     } else {
         console.log('未登录');
-        res.locals('authenticated',false);
+        res.locals.authenticated = false;
         next();
     }
 });
@@ -87,7 +87,7 @@ app.get('/login/:signupEmail',function(req, res){
 });
 
 
-var server = new mongodb.Server('172.16.2.219',27017);
+var server = new mongodb.Server('127.0.0.1',27017);
 new mongodb.Db('my-website',server).open(function (err,client){
     if(err) throw err;
     console.log('connect to mongodb');
