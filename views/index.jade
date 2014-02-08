@@ -2,7 +2,7 @@ extends layout
 
 block content
   if (locals.authenticated)
-    p Welcome to #{locals.authenticated}
+    p Welcome to #{locals.me.first}
     a(href="logout") Logout
   else
     p Welcome new visitor!
